@@ -20,6 +20,7 @@ import "dayjs/locale/de";
 import dayjs from "dayjs";
 
 export default function AddEvent() {
+  // State to manage the event form fields
   const [event, setEvent] = useState({
     date: dayjs(),
     startingTime: "",
@@ -27,15 +28,17 @@ export default function AddEvent() {
     title: "",
     description: "",
   });
+  // State to store the list of events
   const [eventList, setEventList] = useState([]);
+  // State to manage the expanded event in the accordion
   const [expandedEvent, setExpandedEvent] = useState(null);
-
+  // State to control the open/close state of the dialog
   const [open, setOpen] = useState(false);
-
+  // Open the dialog
   const handleClickOpen = () => {
     setOpen(true);
   };
-
+  // Close the dialog and reset event form fields
   const handleClose = () => {
     setOpen(false);
     setEvent({
@@ -46,19 +49,19 @@ export default function AddEvent() {
       description: "",
     });
   };
-
+  // Handle accordion expansion/collapse
   const handleAccordionChange = (index) => (event, isExpanded) => {
     setExpandedEvent(isExpanded ? index : null);
   };
-
+  // Handle date change in the date picker
   const handleDateChange = (date) => {
     setEvent({ ...event, date: date });
   };
-
+  // Handle input changes in the text fields
   const handleInputChange = (e) => {
     setEvent({ ...event, [e.target.name]: e.target.value });
   };
-
+  // Add an event to the list
   const addEvent = () => {
     if (dayjs(event.startingTime).isAfter(dayjs(event.endingTime))) {
       alert("Starting time must be before ending time");
@@ -81,7 +84,12 @@ export default function AddEvent() {
     <div>
       <Button
         variant="contained"
-        style={{ marking: 10, color: "white", backgroundColor: "black", display: "flex" }}
+        style={{
+          marking: 10,
+          color: "white",
+          backgroundColor: "black",
+          display: "flex",
+        }}
         onClick={handleClickOpen}
       >
         Add Event
@@ -90,9 +98,6 @@ export default function AddEvent() {
         <DialogTitle>Add Event</DialogTitle>
         <DialogContent>
           <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="de">
-
-
-
             <div className="formInput">
               <DatePicker
                 label="Date"
@@ -115,9 +120,8 @@ export default function AddEvent() {
                 label="Ending time"
                 onChange={(time) => setEvent({ ...event, endingTime: time })}
                 renderInput={(params) => <TextField {...params} />}
-                />
+              />
             </div>
-
           </LocalizationProvider>
           <TextField
             autoFocus
@@ -137,7 +141,6 @@ export default function AddEvent() {
             fullWidth
             margin="dense"
           />
-
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="error">
