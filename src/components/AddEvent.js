@@ -57,6 +57,20 @@ export default function AddEvent() {
   const handleDateChange = (date) => {
     setEvent({ ...event, date: date });
   };
+    // Handle changes in the time pickers
+    const handleStartingTimeChange = (time) => {
+        setEvent((prevEvent) => ({
+          ...prevEvent,
+          startingTime: time,
+        }));
+      };
+    
+      const handleEndingTimeChange = (time) => {
+        setEvent((prevEvent) => ({
+          ...prevEvent,
+          endingTime: time,
+        }));
+      };
   // Handle input changes in the text fields
   const handleInputChange = (e) => {
     setEvent({ ...event, [e.target.name]: e.target.value });
@@ -111,14 +125,14 @@ export default function AddEvent() {
             <div className="formInput">
               <TimePicker
                 label="Starting time"
-                onChange={(time) => setEvent({ ...event, startingTime: time })}
+                onChange={handleStartingTimeChange}
                 renderInput={(params) => <TextField {...params} />}
               />
             </div>
             <div className="formInput">
               <TimePicker
                 label="Ending time"
-                onChange={(time) => setEvent({ ...event, endingTime: time })}
+                onChange={handleEndingTimeChange}
                 renderInput={(params) => <TextField {...params} />}
               />
             </div>
