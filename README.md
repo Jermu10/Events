@@ -1,6 +1,6 @@
-* Add Event Button
+# Add Event Button
 
-** Steps
+## Steps
 
 - Open the form by pressing the Add Event button.
 
