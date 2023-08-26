@@ -138,7 +138,6 @@ export default function AddEvent() {
             </div>
           </LocalizationProvider>
           <TextField
-            autoFocus
             name="title"
             value={event.title}
             onChange={handleInputChange}
@@ -147,7 +146,6 @@ export default function AddEvent() {
             margin="dense"
           />
           <TextField
-            autoFocus
             name="description"
             value={event.description}
             onChange={handleInputChange}
