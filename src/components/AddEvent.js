@@ -118,7 +118,7 @@ export default function AddEvent() {
                 minDate={dayjs()}
                 onChange={handleDateChange}
                 value={event.date}
-                renderInput={(params) => <TextField {...params} />}
+                input={(params) => <TextField {...params} />}
               />
             </div>
             <br />
@@ -126,14 +126,14 @@ export default function AddEvent() {
               <TimePicker
                 label="Starting time"
                 onChange={handleStartingTimeChange}
-                renderInput={(params) => <TextField {...params} />}
+                input={(params) => <TextField {...params} />}
               />
             </div>
             <div className="formInput">
               <TimePicker
                 label="Ending time"
                 onChange={handleEndingTimeChange}
-                renderInput={(params) => <TextField {...params} />}
+                input={(params) => <TextField {...params} />}
               />
             </div>
           </LocalizationProvider>
